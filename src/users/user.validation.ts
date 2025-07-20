@@ -28,10 +28,10 @@ export class UserValidation {
   });
 
   static readonly UPDATE: ZodType = z.object({
-    name: z
+    email: z
       .string()
-      .min(1, 'Name cannot be empty')
-      .max(100, 'Name is too long')
+      .min(1, 'Email cannot be empty')
+      .max(100, 'Email is too long')
       .optional(),
     password: z
       .string()

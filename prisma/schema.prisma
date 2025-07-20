@@ -33,10 +33,10 @@ enum UserStatus {
 
 model User {
   id         String   @id @default(uuid())
-  email String  @db.VarChar(100)
+ email String @unique
   password String  @db.VarChar(100)
   name     String  @db.VarChar(100)
-  token    String? @db.VarChar(100)
+  token    String? @db.VarChar(500)
   created_at     DateTime       @default(now())
   updated_at      DateTime       @updatedAt
 
