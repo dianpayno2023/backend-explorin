@@ -31,10 +31,11 @@
 import {
   BadRequestException,
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectEntityManager } from '@nestjs/typeorm';
-import { UserEntity } from '@/models';
+import { UsersEntity } from '@/models';
 import { EntityManager } from 'typeorm';
 import { pageReturn } from '@/common';
 
@@ -79,8 +80,8 @@ export class UsersService {
   ) {}
 
   async find() {
-    const data = await this.entityManager.find(UserEntity);
-    const count = await this.entityManager.count(UserEntity);
+    const data = await this.entityManager.find(UsersEntity);
+    const count = await this.entityManager.count(UsersEntity);
     return pageReturn(
       [
         {

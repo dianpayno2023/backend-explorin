@@ -6,7 +6,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { CustomJwtService } from '../auth/jwt/jwt.service';
+import { CustomJwtService } from '../../auth/jwt/jwt.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
