@@ -7,7 +7,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersDTO } from '@/common';
 
-@Controller('users')
+@Controller({ path: 'users', version: '1' })
 export class UsersController {
   constructor(private service: UsersService) {}
 

@@ -1,3 +1,4 @@
+import { CustomJwtModule } from '@/auth/jwt/jwt.module';
 import {
   Global,
   MiddlewareConsumer,
@@ -5,12 +6,10 @@ import {
   NestModule,
   RequestMethod,
 } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
-import { AuthMiddleware } from './auth.middleware';
-import { CustomJwtModule } from 'src/auth/jwt/jwt.module';
-
+import { AuthMiddleware } from './auth';
+import { LoggerMiddleware } from './libs';
 @Global()
 @Module({
   imports: [
@@ -20,16 +19,17 @@ import { CustomJwtModule } from 'src/auth/jwt/jwt.module';
     }),
     CustomJwtModule,
   ],
-  // providers: [PrismaService, ValidationService],
-  // exports: [PrismaService, ValidationService],
 })
 export class CommonModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+    consumer
       .apply(AuthMiddleware)
       .exclude(
-        { path: 'users/login', method: RequestMethod.POST },
-        { path: 'users/register', method: RequestMethod.POST },
+        { path: `users/login`, method: RequestMethod.POST },
+        { path: `users/register`, method: RequestMethod.POST },
       )
       .forRoutes({ path: '*', method: RequestMethod.ALL });
   }

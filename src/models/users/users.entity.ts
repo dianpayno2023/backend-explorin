@@ -1,21 +1,25 @@
-// export class RegisterUserRequest {
-//   email: string;
-//   password: string;
-//   name: string;
-// }
-
-import { Column, Entity } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { BaseEntity } from '../base-entity.entity';
-import { IsEmail, IsNotEmpty, IsString, IsUrl, IsUUID } from 'class-validator';
-
-// export class UserResponse {
-//   email: string;
-//   name: string;
-//   token?: string;
-// }
-
-@Entity({name : 'user'})
-export class UserEntity extends BaseEntity {
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUUID,
+} from 'class-validator';
+import { RolesEntity } from '../roles';
+import { RoleAccessEntity } from '../roles/role-access.entity';
+import { UserProfilesEntity } from './user-profiles.entity';
+@Entity({ name: 'users' })
+export class UsersEntity extends BaseEntity {
   @Column({
     name: 'email',
     nullable: false,
@@ -28,14 +32,28 @@ export class UserEntity extends BaseEntity {
   @Column({
     name: 'full_name',
     nullable: false,
+    type: 'varchar',
+    length: 100,
   })
   @IsNotEmpty()
   @IsString()
   fullName: string;
 
   @Column({
+    name: 'user_name',
+    nullable: false,
+    type: 'varchar',
+    length: 100,
+  })
+  @IsOptional()
+  @IsString()
+  userName?: string;
+
+  @Column({
     name: 'password',
     nullable: false,
+    type: 'varchar',
+    length: 255,
   })
   @IsNotEmpty()
   @IsString()
@@ -44,25 +62,12 @@ export class UserEntity extends BaseEntity {
   @Column({
     name: 'phone_number',
     nullable: false,
+    type: 'varchar',
+    length: 15,
   })
   @IsNotEmpty()
   @IsString()
   phoneNumber: string;
-
-  @Column({
-    name: 'avatar_url',
-    nullable: true,
-  })
-  @IsUrl()
-  avatarUrl: string;
-
-  @Column({
-    name: 'id_role',
-    nullable: false,
-  })
-  @IsNotEmpty()
-  @IsUUID()
-  role: string;
 
   @Column({
     name: 'token',
@@ -71,4 +76,16 @@ export class UserEntity extends BaseEntity {
   @IsNotEmpty()
   @IsString()
   token: string;
+
+  @ManyToOne(() => RolesEntity, (data) => data)
+  @IsNotEmpty()
+  @IsUUID()
+  @JoinColumn({ name: 'role_id' })
+  role: RolesEntity;
+
+  @OneToMany(() => RoleAccessEntity, (roleAccess) => roleAccess.user)
+  roleAccess: RoleAccessEntity[];
+
+  @OneToMany(() => UserProfilesEntity, (userProfile) => userProfile.user)
+  userProfiles: UserProfilesEntity[];
 }
