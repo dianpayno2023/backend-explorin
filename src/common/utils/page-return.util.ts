@@ -1,4 +1,4 @@
-import camelcaseKeys from 'camelcase-keys';
+import * as camelCaseKeys from 'camelcase-keys';
 
 export function pageReturn<T>(
   data: T,
@@ -7,7 +7,7 @@ export function pageReturn<T>(
   limit: number,
   msg?: string,
 ) {
-  return camelcaseKeys(
+  return camelCaseKeys(
     {
       msg: msg ? [msg] : [],
       data,

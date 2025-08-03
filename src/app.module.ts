@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { CommonModule, DBConfig } from './common';
 import { FeatureModules } from './features.module';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
+import { DBConfig } from './common/config';
+import { CommonModule } from './common/common.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
