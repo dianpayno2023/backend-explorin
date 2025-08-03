@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: explorin-backend
+    env: docker
+    region: singapore
+    plan: free
+    branch: development
+    dockerfilePath: ./Dockerfile
+    buildFilter:
+      paths:
+        - ./**
+    autoDeploy: true
