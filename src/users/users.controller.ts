@@ -5,7 +5,7 @@
 
 import { Controller, Get, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { UsersDTO } from '@/common';
+import { UsersDTO } from '@/common/dtos';
 
 @Controller({ path: 'users', version: '1' })
 export class UsersController {

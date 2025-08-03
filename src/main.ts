@@ -6,7 +6,8 @@ import { AppModule } from './app.module';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import * as dotenv from 'dotenv';
 import { ValidationPipe } from '@nestjs/common';
-import { HttpExceptionFilter, ResponseInterceptor } from './common';
+import { HttpExceptionFilter } from './common/filters';
+import { ResponseInterceptor } from './common/interceptors';
 dotenv.config();
 
 async function bootstrap() {

@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
-import { parseBoolean } from './common';
 import * as dotenv from 'dotenv';
+import { parseBoolean } from './common/utils';
 dotenv.config();
 
 export const AppDataSource = new DataSource({
