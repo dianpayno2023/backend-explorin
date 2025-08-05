@@ -11,15 +11,18 @@ import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters';
 import { ResponseInterceptor } from './common/interceptors';
 import { AppDataSource } from './data-source';
+import { DBConfig } from './common/config';
 dotenv.config();
 
 async function bootstrap() {
   AppDataSource.initialize()
     .then(() => {
       console.log('Database connected!');
+      console.log(DBConfig.config());
     })
     .catch((error) => {
       console.error('Database koneksinya error:', error);
+      console.log(DBConfig.config());
     });
 
   const app = await NestFactory.create(AppModule);
