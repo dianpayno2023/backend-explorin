@@ -10,21 +10,15 @@ import * as dotenv from 'dotenv';
 import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters';
 import { ResponseInterceptor } from './common/interceptors';
-import { AppDataSource } from './data-source';
-import { DBConfig } from './common/config';
+
+
 dotenv.config();
 
 async function bootstrap() {
-  AppDataSource.initialize()
-    .then(() => {
-      console.log('Database connected!');
-
-      console.log(process.env.DB_HOST, process.env.DB_PORT);
-    })
-    .catch((error) => {
-      console.error('Database koneksinya error:', error);
-      console.log(process.env.DB_HOST, process.env.DB_PORT);
-    });
+  console.log('Connecting to DB with env:', {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+  });
 
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new HttpExceptionFilter());
