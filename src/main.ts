@@ -18,11 +18,12 @@ async function bootstrap() {
   AppDataSource.initialize()
     .then(() => {
       console.log('Database connected!');
-      console.log(DBConfig.config());
+
+      console.log(process.env.DB_HOST, process.env.DB_PORT);
     })
     .catch((error) => {
       console.error('Database koneksinya error:', error);
-      console.log(DBConfig.config());
+      console.log(process.env.DB_HOST, process.env.DB_PORT);
     });
 
   const app = await NestFactory.create(AppModule);
