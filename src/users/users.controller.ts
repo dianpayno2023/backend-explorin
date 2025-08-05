@@ -1,20 +1,21 @@
+/* eslint-disable prettier/prettier */
 // import { Body, Controller, Post } from '@nestjs/common';
 // import { UsersService } from './users.service';
 // import { RegisterUserRequest, UserResponse } from 'src/model/user.model';
 // import { WebResponse } from 'src/model/web.model';
 
-import { Controller, Get, Query } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { UsersDTO } from '@/common/dtos';
+// import { Controller, Get, Query } from '@nestjs/common';
+// import { UsersService } from './users.service';
+// import { UsersDTO } from '@/common/dtos';
 
-@Controller({ path: 'users', version: '1' })
-export class UsersController {
-  constructor(private service: UsersService) {}
+// @Controller({ path: 'users', version: '1' })
+// export class UsersController {
+//   constructor(private service: UsersService) {}
 
-  @Get()
-  async find(@Query() query: UsersDTO) {
-    return this.service.find();
-  }
+//   @Get()
+//   async find(@Query() query: UsersDTO) {
+//     return this.service.find();
+  // }
   //   @Post('register')
   //   async register(
   //     @Body() request: RegisterUserRequest,
@@ -24,4 +25,4 @@ export class UsersController {
   //       data: result,
   //     };
   //   }
-}
+// }

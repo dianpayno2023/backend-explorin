@@ -28,16 +28,16 @@
 //           request,
 //         ) as RegisterUserRequest;
 
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
-import { InjectEntityManager } from '@nestjs/typeorm';
-import { UsersEntity } from '@/models';
-import { EntityManager } from 'typeorm';
-import { pageReturn } from '@/common/utils';
+// import {
+//   BadRequestException,
+//   Injectable,
+//   InternalServerErrorException,
+//   NotFoundException,
+// } from '@nestjs/common';
+// import { InjectEntityManager } from '@nestjs/typeorm';
+// import { UsersEntity } from '@/models';
+// import { EntityManager } from 'typeorm';
+// import { pageReturn } from '@/common/utils';
 
 //       const totalUserWithTheSameUsername = await this.PrismaService.user.count({
 //         where: {
@@ -73,26 +73,26 @@ import { pageReturn } from '@/common/utils';
 //   }
 // }
 
-@Injectable()
-export class UsersService {
-  constructor(
-    @InjectEntityManager() private readonly entityManager: EntityManager,
-  ) {}
+// @Injectable()
+// export class UsersService {
+//   constructor(
+//     @InjectEntityManager() private readonly entityManager: EntityManager,
+//   ) {}
 
-  async find() {
-    const data = await this.entityManager.find(UsersEntity);
-    const count = await this.entityManager.count(UsersEntity);
-    // return pageReturn(
-    //   [
-    //     {
-    //       nama: 'test',
-    //       alamat_lengkap: 'test',
-    //     },
-    //   ],
-    //   count,
-    //   1,
-    //   10,
-    // );
-    return pageReturn(data, count, 1, 10);
-  }
-}
+// async find() {
+//   const data = await this.entityManager.find(UsersEntity);
+//   const count = await this.entityManager.count(UsersEntity);
+// return pageReturn(
+//   [
+//     {
+//       nama: 'test',
+//       alamat_lengkap: 'test',
+//     },
+//   ],
+//   count,
+//   1,
+//   10,
+// );
+// return pageReturn(data, count, 1, 10);
+// }
+// }

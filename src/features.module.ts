@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { UsersModule } from "./users/users.module";
+import { Module } from '@nestjs/common';
+import { TestModule } from './test/test.module';
+// import { UsersModule } from "./users/users.module";
 
 @Module({
-    imports: [UsersModule],
+  imports: [TestModule],
 })
-
 export class FeatureModules {}

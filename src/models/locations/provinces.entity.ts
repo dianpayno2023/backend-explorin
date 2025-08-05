@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base-entity.entity';
 import { IsNotEmpty, IsString } from 'class-validator';
