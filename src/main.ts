@@ -11,7 +11,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters';
 import { ResponseInterceptor } from './common/interceptors';
 
-
 dotenv.config();
 
 async function bootstrap() {
