@@ -19,7 +19,7 @@ async function bootstrap() {
       console.log('Database connected!');
     })
     .catch((error) => {
-      console.error('Database connection error:', error);
+      console.error('Database koneksinya error:', error);
     });
 
   const app = await NestFactory.create(AppModule);

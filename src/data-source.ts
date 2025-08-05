@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { parseBoolean } from './common/utils';
 dotenv.config();
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST,
